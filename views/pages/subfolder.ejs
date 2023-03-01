@@ -1,0 +1,19 @@
+<%- include('../layout/header') %>
+
+   <main class="p-3">
+		<div class="nav-container">
+			<a href="/">
+				<iconify-icon icon="material-symbols:home-rounded"></iconify-icon>
+			</a>
+			<p style="word-break:break-all;">Current Path: <span class="text-muted"><%- storage %>/<%= name %></span></p>
+		</div>
+		<hr />
+		  <% for(let i = 0; i < content.length; i++) { %>
+		    <a style="word-break:break-all;" class="folder" href=<%- '/'+encodeURI(name)+'/'+encodeURI(content[i]) %> >
+            <iconify-icon class="icon" icon="material-symbols:folder-sharp"></iconify-icon>
+				<%= content[i] %>
+		    </a>
+		  <% } %>		
+   </main>
+
+<%- include('../layout/footer') %>
