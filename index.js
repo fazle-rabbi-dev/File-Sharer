@@ -8,7 +8,6 @@ const ngrok = require('ngrok');
 const http = require('http');
 const { exec } = require('child_process');
 
-
 // Colors
 const red = '\x1b[1;91m';
 const green = '\x1b[1;92m';
@@ -51,7 +50,8 @@ app.set('engine','ejs');
 
 // 404 - Error handler
 app.use((req,res,next) => {
-	res.send('404 - Page not found');
+	res.render('utility/page_not_found.ejs');
+	// res.send('404')
 });
 
 // Server side error handler
@@ -110,4 +110,14 @@ async function startApp(){
 	});  
 }
 
-startApp();
+// startApp();
+
+app.listen(PORT,(err)=>{
+	if(err){
+		console.log(err)
+		
+		return;
+	}
+	console.log('Sever started..')
+	
+})

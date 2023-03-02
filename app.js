@@ -8,15 +8,28 @@ const {
 
 // Set public folder
 app.use(express.static('public'));
+app.use(express.urlencoded({extended:true}));
 
 // Home Page/1st directory
-app.get('/', (req,res) => {
+app.route('/')
+.get((req,res) => {
    content = readStorage();
+   
+   // res.render("pages/login.ejs")
+   
    res.render('home.ejs',{
 		content,
 		storage
    });
+})
+// For user authentication
+.post((req,res) => {
+	// username = req.body.username
+	// password = req.body.password
+	console.log(req.body);
+	res.send('ok');
 });
+
 
 // 2nd directory
 app.get('/:name', (req,res) => {
@@ -39,7 +52,7 @@ app.get('/:name', (req,res) => {
 	   });
 	}
 	else{
-	 	res.send('Error');
+	 	res.render('utility/page_not_found.ejs');
 	}	
 });
 
@@ -64,7 +77,7 @@ app.get('/:name/:name2', (req,res) => {
 	   });
 	}
 	else{
-		res.send('Error');
+		res.render('utility/page_not_found.ejs');
 	}
 });
 
@@ -90,7 +103,7 @@ app.get('/:name/:name2/:name3', (req,res) => {
 	   });
 	}
 	else{
-		res.send('Error');
+		res.render('utility/page_not_found.ejs');
 	}
 });
 
@@ -116,7 +129,7 @@ app.get('/:name/:name2/:name3/:name4', (req,res) => {
 	   });
 	}
 	else{
-		res.send('Error');
+		res.render('utility/page_not_found.ejs');
 	}
 });
 
@@ -145,7 +158,7 @@ app.get('/:name/:name2/:name3/:name4/:name5', (req,res) => {
 	   });
 	}
 	else{
-		res.send('Error');
+		res.render('utility/page_not_found.ejs');
 	}
 });
 
@@ -173,7 +186,7 @@ app.get('/:name/:name2/:name3/:name4/:name5/:name6', (req,res) => {
 	   });
 	}
 	else{
-		res.send('Error');
+		res.render('utility/page_not_found.ejs');
 	}
 });
 

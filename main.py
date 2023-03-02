@@ -140,6 +140,7 @@ def main():
 			time.sleep(.5)
 			os.system('clear')			
 		elif option == 'y':
+			os.system('clear')
 			os.system('node index.js')
 		elif option == 'n':
 			getUserInput()
