@@ -10,6 +10,18 @@ from colorama import *
 
 os.system('clear')
 
+# Banner
+def banner():
+	print("""
+┌───────────────────────────────────────┐
+│> File-Sharer v1.0                     │
+│> Author: Fazle Rabbi                  │
+│> Github: https://github.com/fh-rabbi  │
+└───────────────────────────────────────┘
+	""")
+
+banner()
+
 # --------------------------
 # check whether a file path 
 # is a file or a directory.
