@@ -10,7 +10,9 @@ try {
 	// console.log(path)
 	storage = path;
 } catch (e) {
-	console.log('Error inside helper.js');
+	console.log('\033[1;31m[!] Path not found\033[1;37m');
+	console.log('[*] Please run this app by executing (python main.py)')
+	process.exit(1);
 }
 
 // Read Folders and Files 

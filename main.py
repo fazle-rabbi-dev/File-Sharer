@@ -1,3 +1,8 @@
+# =======================================#
+# Author: Fazle Rabbi					     #
+# Github: https://github.com/fh-rabbi    #
+# =======================================#
+
 #!/bin/python
 import os  
 import time
@@ -41,7 +46,7 @@ def getUserInput():
 				# Write to file
 				f.write(path_name)
 			os.system('node index.js')
-			print('Hello...')
+			# print('Hello...')
 			# print(Fore.CYAN+"[*] Server started at http://localhost:3000")
 		else:
 			print(Fore.RED+"[*] Oops! invalid path.Enter valid path"+Fore.RESET)
@@ -53,7 +58,7 @@ def main():
 	is_exists_path = read_file('path.txt')
 	if is_exists_path:
 		path_name = read_file('path.txt')
-		option = input(f"{Fore.YELLOW}{Style.BRIGHT}[*] Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET} (y/n)?{Fore.YELLOW} Press other key for cancel:"+Fore.RESET)
+		option = input(f"{Fore.CYAN}{Style.BRIGHT}[*] Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET} (y/n)?{Fore.CYAN} Press other key for cancel:"+Fore.RESET)
 		# print(Fore.RESET)
 		if option == 'y':
 			os.system('node index.js')

@@ -1,22 +1,58 @@
 #!/bin/node
 const app = require('./app.js');
 const PORT = process.env.PORT || 3000;
-const readline = require('readline');
 const fs = require("fs");
 const os = require('os');
-const {getData} = require("./helper.js");
 const axios = require("axios");
+const ngrok = require('ngrok');
+const http = require('http');
+const { exec } = require('child_process');
 
+
+// Colors
+const red = '\x1b[1;91m';
+const green = '\x1b[1;92m';
+const yellow = '\x1b[1;33m';
+const blue = '\x1b[1;94m';
+const pink = '\x1b[1;95m';
+const cyan = '\x1b[1;96m';
+const white = '\x1b[1;37m';
+
+// Function to display animation while checking
+function displayAnimation(text) {
+  const animation = ['|', '/', '-', '\\'];
+  let i = 0;
+  return setInterval(() => {
+    process.stdout.write('\r'+ text + animation[i]);
+    i = (i + 1) % animation.length;
+  }, 250);
+}
+
+// Check whether device connected to internet or not!
+async function checkInternetConnection() {
+	try {
+		let interval_id = displayAnimation('🌏 Checking internet connection ');
+		const res = await axios.get('https://google.com');
+		if(res.status == 200){
+			clearInterval(interval_id);
+			console.log(green+'\n\n[✔] Internet connection is active');
+			console.log(white+'\n[✔] Make sure you have enabled hotspot on your device.Else remote link will not generate!\n');
+		}
+	} catch (e) {
+		console.log('[!] No internet connection');
+		console.log('[!] Turn on your internet connection');
+		console.log('[!] Also turn on your hotspoy else remote link will note generate');
+		process.exit(1);
+	}
+}
 
 // Set template engine
 app.set('engine','ejs');
-
 
 // 404 - Error handler
 app.use((req,res,next) => {
 	res.send('404 - Page not found');
 });
-
 
 // Server side error handler
 app.use((err,req,res,next)=>{
@@ -25,6 +61,7 @@ app.use((err,req,res,next)=>{
 	.json({Message:"There is an server side error"});
 });
 
+// Get ip
 function getIp(){
 	// Get network interfaces
 	const networkInterfaces = os.networkInterfaces();
@@ -39,40 +76,38 @@ function getIp(){
 }
 
 // Start app
-const red = '\x1b[1;91m';
-const green = '\x1b[1;92m';
-const white = '\x1b[1;37m';
-const yellow = '\x1b[1;33m';
-function startApp(){
-	// const REMOTE_URL = getData('http://localhost:4040/api/tunnels');
-	console.log(white);
-	const url = 'http://localhost:4040/api/tunnels';
-	// Call Ngrok Api For Get Public/Remote Url
-	axios.get(url)
-  .then(response => {
-    const tunnels = response.data.tunnels;
-    let REMOTE_URL = tunnels[0].public_url;
-    
-		app.listen(PORT, (err)=>{
-		   if(!err){
-				console.log('\n');
-				console.log(`${green}✅ Server started successful${white}`);
-				console.log(`${white}[*] Local Url   : ${yellow}http://localhost:${PORT}`);
-				console.log(`${white}[*] Hotspot Url : ${yellow}http://${getIp()}:${PORT}`);
-				console.log(`${white}[*] Remote Url  : ${yellow}${REMOTE_URL}`);
-				console.log('\n');
-				console.log(`${red}[!] For stop press (Ctrl+C)`);
-		   }
-		   else{
-				console.log("🤖 Unable to start server!");
-		   }
-		});
-    
-  })
-  .catch(error => {
-    console.log(`${red}🚨 Oops! something went wrong.Look like you are trying to run this app incurrectly.Please read the instruction from ${yellow}https://github.com/fh-rabbi/File-Sharer${white} and run this app currectly.${white}`);
-  });
+async function startApp(){
+	await checkInternetConnection();
 	
+	// Start animation while starting ngrok server
+	let interval_id = displayAnimation(cyan+'[*] Starting ngrok server '+white);
+	
+	// Get ngrok url
+	let url = '';
+	try {
+		url = await ngrok.connect(PORT);
+		clearInterval(interval_id);
+	} catch (e) {
+		clearInterval(interval_id);
+		console.log(red+"\n[!] Maybe your hotspot is turned off.Please enable it and run this app again.\n"+white);
+		process.exit(1);
+	}
+	
+	// Finally listen app
+	app.listen(PORT, (err)=>{
+	   if(!err){
+			console.log('\n');
+			console.log(`${white}[✔] Server started successful${white}`);
+			console.log(`${white}[*] Local Url   : ${cyan}http://localhost:${PORT}`);
+			console.log(`${white}[*] Hotspot Url : ${cyan}http://${getIp()}:${PORT}`);
+			console.log(`${white}[*] Remote Url  : ${cyan}${url}`);
+			console.log('\n');
+			console.log(`${red}[!] For stop press (Ctrl+C)`);
+	   }
+	   else{
+			console.log("🤖 Unable to start server!");
+	   }
+	});  
 }
 
 startApp();
