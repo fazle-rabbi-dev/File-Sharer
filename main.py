@@ -11,20 +11,35 @@ from colorama import *
 
 os.system('clear')
 
+
 # Banner
 def banner():
 	print(f"""
-●▬▬▬▬▬▬▬▬▬๑۩۩๑▬▬▬▬▬▬▬▬●
-	File-Sharer
-«----------✧----------»
+       {Fore.CYAN}«--------------------✧--------------------»
+{Fore.RED}{Style.BRIGHT}    _______ __          _____ __                        
+{Fore.GREEN}   / ____(_) /__       / ___// /_  ____ _________  _____
+{Fore.YELLOW}  / /_  / / / _ \______\__ \/ __ \/ __ `/ ___/ _ \/ ___/
+{Fore.CYAN} / __/ / / /  __/_____/__/ / / / / /_/ / /  /  __/ /    
+{Fore.BLUE}/_/   /_/_/\___/     /____/_/ /_/\__,_/_/   \___/_/ {Style.BRIGHT}{Fore.YELLOW}v1.0{Fore.GREEN}    
+       {Fore.CYAN}«--------------------✧--------------------»{Fore.RESET}""")	
+
+# Menu
+def menu(path_name):
+	banner()
+	print(f"""
+
 ╔══════════════════════════════════════════╗
-║{Fore.YELLOW}* {Fore.RESET}Author  {Fore.RED}  : {Fore.CYAN}Fazle Rabbi{Fore.RESET}                 ║
-║{Fore.YELLOW}* {Fore.RESET}Github  {Fore.RED}  : {Fore.CYAN}https://github.com/fh-rabbi{Fore.RESET} ║
-║{Fore.YELLOW}* {Fore.RESET}Version {Fore.RED}  : {Fore.CYAN}1.0{Fore.RESET}                         ║
-╠══════════════════════════════════════════╝	""")
+║{Fore.YELLOW}* {Fore.RESET}Author  {Fore.RED}  : {Fore.CYAN}{Style.BRIGHT}Fazle Rabbi{Fore.RESET}                 ║
+║{Fore.YELLOW}* {Fore.RESET}Github  {Fore.RED}  : {Fore.GREEN}\033[4mhttps://github.com/fh-rabbi\033[0m{Fore.RESET} ║
+╠══════════════════════════════════════════╝
+║--{Fore.RED}> {Fore.CYAN}{Style.BRIGHT}Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET}
+║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}1.{Fore.RESET} Yes
+║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}2.{Fore.RESET} No
+║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}0.{Fore.RESET} Exit
+║""")
 
 
-banner()
+# banner()
 
 # --------------------------
 # check whether a file path 
@@ -57,7 +72,7 @@ def write_path(path_name):
 		f.write(path_name)
 	# Run app
 	# os.system('clear')
-	os.system('node index.js')
+	os.system('node js/index.js')
 
 
 # Get Custom Path
@@ -76,20 +91,22 @@ def get_custom_path():
 		get_custom_path();	
 
 
-# Options
-def options():
+# Storage Options
+def storage_options():
 	os.system('clear')
-	print(f"{Fore.GREEN}[?] Which storage do you want to share? {Fore.RESET}")
+	banner()
+	print('\n')
+	print(f"{Fore.GREEN}{Style.BRIGHT}[?] Which storage do you want to share? {Fore.RESET}")
 	print(f"""
- [{Fore.GREEN}1{Fore.RESET}] {Fore.RESET}Phone Storage
- [{Fore.GREEN}2{Fore.RESET}] {Fore.RESET}External Storage/Memory Card
- [{Fore.GREEN}3{Fore.RESET}] {Fore.RESET}Custom Storage Path
- [{Fore.GREEN}0{Fore.RESET}] {Fore.RESET}Cancel
+[{Fore.GREEN}1{Fore.RESET}] {Fore.RESET}Phone Storage
+[{Fore.GREEN}2{Fore.RESET}] {Fore.RESET}External Storage/Memory Card
+[{Fore.GREEN}3{Fore.RESET}] {Fore.RESET}Custom Storage Path
+[{Fore.GREEN}0{Fore.RESET}] {Fore.RESET}Cancel
 	""")
 
 # Read options from user
 def choose_option():
-	options()
+	storage_options()
 	option = input(f"{Fore.GREEN}[*] Choose an option:{Fore.RESET}")
 	if option == '':
 		os.system('clear')
@@ -135,37 +152,24 @@ def getUserInput():
 
 # Main Logic
 def main():
-	url = 'https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/update.txt?token=GHSAT0AAAAAAB7CPEXASGENDDA7TXXEOALUZAAOF2A'
-	try:
-		res = requests.get(url)
-		print(res.text)
-	except:
-		print(f"║--> {Fore.RED}{Style.BRIGHT}No internet.Failed to check update"+Fore.RESET)
-	# if res.text == 'available':
-	#	print("[*] Update available.")
-	#	time.sleep(.6)
-	
 	is_exists_path = read_file('path.txt')
 	if is_exists_path:
 		path_name = read_file('path.txt')
-		print(f"""║--> {Fore.CYAN}{Style.BRIGHT}Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET}
-║--{Fore.RED}>{Fore.RESET} 1. Yes
-║--{Fore.RED}>{Fore.RESET} 2. No
-║--{Fore.RED}>{Fore.RESET} 0. Exit
-║""")
-		option = input("╚═══ ")
+		os.system('clear')
+		menu(path_name)
+		option = input(f"╚═══ {Fore.GREEN}")
 		if option == '0':
 			print(Fore.RED+"[*] Quiting .."+Fore.RESET)
 			time.sleep(.5)
 			os.system('clear')			
 		elif option == '1':
 			os.system('clear')
-			os.system('node index.js')
+			os.system('node js/index.js')
 		elif option == '2':
 			getUserInput()
 		else:
 			os.system('clear')
-			banner()
+			menu(path_name)
 			main()
 	else:
 		getUserInput()

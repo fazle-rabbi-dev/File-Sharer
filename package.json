@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "python main.py",
+    "push": "bash lib/push.sh"
   },
   "keywords": [],
   "author": "",
