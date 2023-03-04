@@ -25,8 +25,8 @@ function install(){
 	
 	pkg install git -y
 	pkg install python -y
-	pkg install python2 -y
-	pkg install python3 -y
+	# pkg install python2 -y
+	# pkg install python3 -y
 	pkg install nodejs-lts -y
 	
 	git clone https://github.com/fh-rabbi/File-Sharer
