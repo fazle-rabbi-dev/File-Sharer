@@ -8,6 +8,9 @@ const ngrok = require('ngrok');
 const http = require('http');
 const { exec } = require('child_process');
 
+// Clear terminal
+console.clear();
+
 // Colors
 const red = '\x1b[1;91m';
 const green = '\x1b[1;92m';
@@ -94,7 +97,10 @@ async function startApp(){
 	}
 	
 	// Finally listen app
-	app.listen(PORT, (err)=>{
+	const server = app.listen(PORT, (err)=>{
+	   if(err){
+		return console.log('Error')
+	   }
 	   if(!err){
 			console.log('\n');
 			console.log(`${white}[✔] Server started successful${white}`);
@@ -102,12 +108,29 @@ async function startApp(){
 			console.log(`${white}[*] Hotspot Url : ${cyan}http://${getIp()}:${PORT}`);
 			console.log(`${white}[*] Remote Url  : ${cyan}${url}`);
 			console.log('\n');
-			console.log(`${red}[!] For stop press (Ctrl+C)`);
+			console.log(`${yellow}[!] For stop press (Ctrl+C)`);
+			console.log(`${red}[!] Dont't press (Ctrl+Z)! if you press then you need to restart your termux app`);
+			return;
 	   }
 	   else{
 			console.log("🤖 Unable to start server!");
 	   }
 	});  
+	
+	// Handle error
+	server.on('error', (error) => {
+	  if (error.code === 'EADDRINUSE') {
+	    console.error('\n\n'+`${red}[!] Port ${PORT} is already in use`);
+	    console.log(`${green}[*] Maybe you pressed (Ctrl+z)`);
+	    console.log(`${yellow}[*] Restart your termux and try again.${'\n'}`);
+	  } else {
+	    console.error("[!] Unable to start server!");
+	    console.log("[*] Restart your termux and try again.");
+	  }
+	  process.exit(1); // Exit with error code 1
+	});
+	
+	
 }
 
 startApp();

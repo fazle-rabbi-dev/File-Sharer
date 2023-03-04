@@ -35,6 +35,7 @@ def menu(path_name):
 ║--{Fore.RED}> {Fore.CYAN}{Style.BRIGHT}Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET}
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}1.{Fore.RESET} Yes
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}2.{Fore.RESET} No
+║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}3.{Fore.RESET} Update
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}0.{Fore.RESET} Exit
 ║""")
 
@@ -167,6 +168,16 @@ def main():
 			os.system('node js/index.js')
 		elif option == '2':
 			getUserInput()
+		elif option == '3':
+			update_available = True
+			if update_available:
+				os.system('clear')
+				os.system('bash lib/update.sh')
+			else:
+				os.system('clear')
+				time.sleep(1)
+				print("[*] Already up to date")
+				os.system('python main.py')
 		else:
 			os.system('clear')
 			menu(path_name)

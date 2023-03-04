@@ -31,6 +31,7 @@ function install(){
 	
 	git clone https://github.com/fh-rabbi/File-Sharer
 	cd File-Sharer
+	clear
 	echo ""
 	echo -e "$green>> Installing node modules .."
 	echo ""
@@ -47,13 +48,15 @@ function install(){
 	sleep 1
 	# Go To App Directory
 	cd $HOME/File-Sharer
-	cp start-file-sharer /data/data/com.termux/files/usr/bin
+	mv start-file-sharer /data/data/com.termux/files/usr/bin
 	cd /data/data/com.termux/files/usr/bin
 	chmod +x start-file-sharer
 	
 	clear
 	sleep 1
 	
+	cd $HOME/File-Sharer
+	rm lib/install.sh
 	echo -e "$green[✔] Installation has been finished"
 	echo -e "$blue[✔] Now you can run this app by executing bellow command from any location in your termux!"
 	echo -e "$yellow[*] start-file-sharer$reset"

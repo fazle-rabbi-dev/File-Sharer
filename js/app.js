@@ -7,7 +7,7 @@ const {
 	sendResponse,
 	makePath
 } = require("./helper.js");
-
+const axios = require('axios');
 
 // Set public folder
 app.use(express.static('public'));
@@ -38,7 +38,20 @@ function makeResponse(req,res) {
 
 // Home Page/1st directory
 app.route('/')
-.get((req,res) => {
+.get(async(req,res) => {
+   // Let print someone open this link
+   console.log("\033[1;92m\n>>>:")
+   console.log("[*] Someone opened your link")
+   
+   try {
+    const response = await axios.get('https://api.ipify.org/?format=json');
+    const publicIp = response.data.ip;
+    console.log('\033[1;93m'+`[*] From this ip address: ${publicIp}`);
+  } catch (error) {
+    console.error("\033[1;91m[*] Error while getting ip address");
+    //res.status(500).send('Error getting public IP address');
+  }
+   
    content = readStorage();
    res.render('home.ejs',{
 		content,
