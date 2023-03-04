@@ -3,191 +3,167 @@ const app = express();
 const {
 	readStorage,
 	checkFileOrDir,
-	storage
+	storage,
+	sendResponse,
+	makePath
 } = require("./helper.js");
+
 
 // Set public folder
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}));
 
+
+/*====================================*/
+// DRY:-)!
+function makeEndpoint(amount){
+	let endpoint = '';
+	for(let i=1;i<=amount;i++){
+		endpoint += `/:name${i}`;
+	}
+	return endpoint;
+}
+
+// DRY:-)!
+function makeResponse(req,res) {
+	// Get path name
+	path_name = makePath(req.params);
+	// Getting info about path
+	const stats = checkFileOrDir(path_name);
+	// Send response based on stats
+	sendResponse(req,res,stats);	
+}
+/*====================================*/
+
+
 // Home Page/1st directory
 app.route('/')
 .get((req,res) => {
    content = readStorage();
-   
-   // res.render("pages/login.ejs")
-   
    res.render('home.ejs',{
 		content,
 		storage
    });
-})
-// For user authentication
-.post((req,res) => {
-	// username = req.body.username
-	// password = req.body.password
-	console.log(req.body);
-	res.send('ok');
 });
 
 
-// 2nd directory
-app.get('/:name', (req,res) => {
-	const {name} = req.params;
-	const query = req.query;
-	path_name = name;
-
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
-
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-	 	res.render('utility/page_not_found.ejs');
-	}	
-});
-
-// 3rd directory
-app.get('/:name/:name2', (req,res) => {
-	let {name,name2} = req.params;
-	const query = req.query;
-	path_name = name+'/'+name2;
-
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
-
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-		res.render('utility/page_not_found.ejs');
-	}
+// 1st sub directory
+app.get('/:name1', (req,res) => {
+	makeResponse(req,res);
 });
 
 
-// 4th directory
-app.get('/:name/:name2/:name3', (req,res) => {
-	let {name,name2,name3} = req.params;
-	const query = req.query;
-	path_name = `${name}/${name2}/${name3}`;
-
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
-
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-		res.render('utility/page_not_found.ejs');
-	}
+// 2nd sub directory
+app.get(makeEndpoint(2), (req,res) => {
+	makeResponse(req,res);
 });
 
 
-// 5th directory
-app.get('/:name/:name2/:name3/:name4', (req,res) => {
-	let {name,name2,name3,name4} = req.params;
-	const query = req.query;
-	path_name = `${name}/${name2}/${name3}/${name4}`;
-
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
-
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-		res.render('utility/page_not_found.ejs');
-	}
+// 3rd sub directory
+app.get(makeEndpoint(3), (req,res) => {
+	makeResponse(req,res);
 });
 
 
-// 6th directory
-app.get('/:name/:name2/:name3/:name4/:name5', (req,res) => {
-	let {
-		name,name2,name3,
-		name4,name5
-	} = req.params;
-	const query = req.query;
-	path_name = `${name}/${name2}/${name3}/${name4}/${name5}`;
-
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
-
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-		res.render('utility/page_not_found.ejs');
-	}
+// 4th sub directory
+app.get(makeEndpoint(4), (req,res) => {
+	makeResponse(req,res);
 });
 
-// 7th directory
-app.get('/:name/:name2/:name3/:name4/:name5/:name6', (req,res) => {
-	let {
-		name,name2,name3,
-		name4,name5,name6
-	} = req.params;
-	const query = req.query;
-	path_name = `${name}/${name2}/${name3}/${name4}/${name5}/${name6}`;
 
-	// Getting info about path
-	const stats = checkFileOrDir(path_name);
+// 5th sub directory
+app.get(makeEndpoint(5), (req,res) => {
+	makeResponse(req,res);
+});
 
-	if(stats.includes('file')){
-		res.sendFile(`/${storage}/${path_name}`);
-	}
-	else if(stats.includes('directory')){
-		const content = readStorage(path_name);
-		res.render('pages/subfolder.ejs',{
-			content,
-			name:path_name,
-			storage
-	   });
-	}
-	else{
-		res.render('utility/page_not_found.ejs');
-	}
+
+// 6th sub directory
+app.get(makeEndpoint(6), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 7th sub directory
+app.get(makeEndpoint(7), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 8th sub directory
+app.get(makeEndpoint(8), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 9th sub directory
+app.get(makeEndpoint(9), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 10th sub directory
+app.get(makeEndpoint(10), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 11th sub directory
+app.get(makeEndpoint(11), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 12th sub directory
+app.get(makeEndpoint(12), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 13th sub directory
+app.get(makeEndpoint(13), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 14th sub directory
+app.get(makeEndpoint(14), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 15th sub directory
+app.get(makeEndpoint(15), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 16th sub directory
+app.get(makeEndpoint(16), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 17th sub directory
+app.get(makeEndpoint(17), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 18th sub directory
+app.get(makeEndpoint(18), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 19th sub directory
+app.get(makeEndpoint(19), (req,res) => {
+	makeResponse(req,res);
+});
+
+
+// 20th sub directory
+app.get(makeEndpoint(20), (req,res) => {
+	makeResponse(req,res);
 });
 
 

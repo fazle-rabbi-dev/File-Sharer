@@ -6,19 +6,23 @@
 #!/bin/python
 import os  
 import time
+import requests
 from colorama import *
 
 os.system('clear')
 
 # Banner
 def banner():
-	print("""
-┌───────────────────────────────────────┐
-│> File-Sharer v1.0                     │
-│> Author: Fazle Rabbi                  │
-│> Github: https://github.com/fh-rabbi  │
-└───────────────────────────────────────┘
-	""")
+	print(f"""
+●▬▬▬▬▬▬▬▬▬๑۩۩๑▬▬▬▬▬▬▬▬●
+	File-Sharer
+«----------✧----------»
+╔══════════════════════════════════════════╗
+║{Fore.YELLOW}* {Fore.RESET}Author  {Fore.RED}  : {Fore.CYAN}Fazle Rabbi{Fore.RESET}                 ║
+║{Fore.YELLOW}* {Fore.RESET}Github  {Fore.RED}  : {Fore.CYAN}https://github.com/fh-rabbi{Fore.RESET} ║
+║{Fore.YELLOW}* {Fore.RESET}Version {Fore.RED}  : {Fore.CYAN}1.0{Fore.RESET}                         ║
+╠══════════════════════════════════════════╝	""")
+
 
 banner()
 
@@ -72,7 +76,7 @@ def get_custom_path():
 		get_custom_path();	
 
 
-# Ootions
+# Options
 def options():
 	os.system('clear')
 	print(f"{Fore.GREEN}[?] Which storage do you want to share? {Fore.RESET}")
@@ -131,18 +135,33 @@ def getUserInput():
 
 # Main Logic
 def main():
+	url = 'https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/update.txt?token=GHSAT0AAAAAAB7CPEXASGENDDA7TXXEOALUZAAOF2A'
+	try:
+		res = requests.get(url)
+		print(res.text)
+	except:
+		print(f"║--> {Fore.RED}{Style.BRIGHT}No internet.Failed to check update"+Fore.RESET)
+	# if res.text == 'available':
+	#	print("[*] Update available.")
+	#	time.sleep(.6)
+	
 	is_exists_path = read_file('path.txt')
 	if is_exists_path:
 		path_name = read_file('path.txt')
-		option = input(f"{Fore.CYAN}{Style.BRIGHT}[*] Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET} (y/n)?{Fore.CYAN} Press (c) for cancel:"+Fore.RESET)
-		if option == 'c':
-			print(Fore.RED+"[*] Cancelling .."+Fore.RESET)
+		print(f"""║--> {Fore.CYAN}{Style.BRIGHT}Do you want to use previous path {Fore.GREEN}{path_name}{Fore.RESET}
+║--{Fore.RED}>{Fore.RESET} 1. Yes
+║--{Fore.RED}>{Fore.RESET} 2. No
+║--{Fore.RED}>{Fore.RESET} 0. Exit
+║""")
+		option = input("╚═══ ")
+		if option == '0':
+			print(Fore.RED+"[*] Quiting .."+Fore.RESET)
 			time.sleep(.5)
 			os.system('clear')			
-		elif option == 'y':
+		elif option == '1':
 			os.system('clear')
 			os.system('node index.js')
-		elif option == 'n':
+		elif option == '2':
 			getUserInput()
 		else:
 			os.system('clear')

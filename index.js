@@ -38,7 +38,7 @@ async function checkInternetConnection() {
 			console.log(white+'\n[✔] Make sure you have enabled hotspot on your device.Else remote link will not generate!\n');
 		}
 	} catch (e) {
-		console.log('[!] No internet connection');
+		console.log(red+'[!] No internet connection');
 		console.log('[!] Turn on your internet connection');
 		console.log('[!] Also turn on your hotspoy else remote link will note generate');
 		process.exit(1);
@@ -110,9 +110,9 @@ async function startApp(){
 	});  
 }
 
-// startApp();
+startApp();
 
-app.listen(PORT,(err)=>{
+/*app.listen(PORT,(err)=>{
 	if(err){
 		console.log(err)
 		
@@ -121,3 +121,4 @@ app.listen(PORT,(err)=>{
 	console.log('Sever started..')
 	
 })
+*/
