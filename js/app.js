@@ -40,8 +40,7 @@ function makeResponse(req,res) {
 app.route('/')
 .get(async(req,res) => {
    // Let print someone open this link
-   console.log("\033[1;92m\n>>>:")
-   console.log("[*] Someone opened your link")
+   console.log("\033[1;92m[*] Someone opened your link")
    
    try {
     const response = await axios.get('https://api.ipify.org/?format=json');

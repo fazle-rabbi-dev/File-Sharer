@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@300&family=Open+Sans&family=Patrick+Hand&family=Poppins&family=Raleway&family=Sofia+Sans:wght@300;500&family=Unbounded&display=swap');
+
 body{
 	background: #f8f8f8;
 	/* background: cyan; */
+	
 }
 
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100vh;
+	
+	
+}
+
+header{
+	font-family: 'Unbounded', cursive;
+}
 
 *{
 	list-style-type: none;
@@ -28,6 +43,7 @@ hr{
 
 .folder{
 	display: flex;
+	gap: 10px;
 	/* flex-direction: column; */
 	/* background: white; */
 	margin-top: 5px;
@@ -36,10 +52,11 @@ hr{
 	text-decoration: none;
 	color: #222;
 	padding: 0 5px;
+	font-family: 'Lato', sans-serif;
 }
 
 .icon{
-	color: #5b18d3;
+	color: seagreen;
 	font-size: 3rem;
 }
 
@@ -47,4 +64,3 @@ hr{
 	background: #ededed;
 	color: #333;
 }
-

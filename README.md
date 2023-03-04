@@ -5,17 +5,13 @@
 <img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="" />
 <img src="https://img.shields.io/badge/Maintained%3f-yes-seagreen.svg" alt="" />
 </p>
-<br />
-<img width="100%" src="https://user-images.githubusercontent.com/71178740/222881488-a4eb2083-d9a5-40b1-8549-526fdc8a92dc.png" />
-<br />
-
+<img width="100%" src="thumb.png" />
 <img src="https://img.shields.io/badge/Made%20with-Nodejs-067a23.svg?v=103" alt="" />
 <img src="https://img.shields.io/badge/Made%20with-Expressjs-cdd0d0.svg?v=103" alt="" />
 <img src="https://img.shields.io/badge/Made%20with-Python-2380c9.svg?v=103" alt="" />
 <img src="https://img.shields.io/badge/Made%20with-Bash-333.svg?v=103" alt="" />
 
 </div>
-
 
 
 # About
@@ -37,6 +33,7 @@ Try it out today and experience the power of seamless file sharing on your Andro
 * git,nodejs,python
 * hotspot enabled
 * storage 400 MB
+* Node >> 16.18.1
 
 ### FEATURES :
 * Share your internel storage
@@ -46,11 +43,19 @@ Try it out today and experience the power of seamless file sharing on your Andro
 ### INSTALLATION [Termux] :
 * Firstly Download <a class="" href="#">Termux</a>
 * Execute bellow command
+
+* `termux-setup-storage` after executing this command press y and give storage permiasion
+
 * `bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)`
+
 * `start-file-sharer`
 
 
 ### SCREEN SHOTS [Termux]:
+<div align="center">
+	<img width="40%" src="screenshots/one.png" alt="" />
+	<img width="40%" src="screenshots/two.png" alt="" />
+</div>
 
 
 ### WATCH VIDEO [Termux]:

@@ -79,7 +79,7 @@ def write_path(path_name):
 # Get Custom Path
 def get_custom_path():
 	os.system('clear')
-	path_name = input(f"{Fore.CYAN}[*] Enter your custom storage/folder path Ex:/sdcard:{Fore.RESET}")
+	path_name = input(f"{Fore.CYAN}[*] Enter your custom storage/folder path {Fore.GREEN}Ex:/sdcard:{Fore.RESET}")
 	res = is_valid_path(path_name)
 	if res:
 		time.sleep(.5)
@@ -125,8 +125,9 @@ def choose_option():
 			path = '/storage/sdcard0'
 			res = is_valid_path(path)
 			if res:
-				print("[✔] Using external storage")
+				os.system('clear')
 				time.sleep(.5)
+				print("[✔] Using external storage")
 				write_path(path)
 			else:
 				print(f"{Fore.RED}[!] Memory card could not found{Fore.RESET}")
@@ -160,6 +161,7 @@ def main():
 		menu(path_name)
 		option = input(f"╚═══ {Fore.GREEN}")
 		if option == '0':
+			os.system('clear')
 			print(Fore.RED+"[*] Quiting .."+Fore.RESET)
 			time.sleep(.5)
 			os.system('clear')			
@@ -169,9 +171,18 @@ def main():
 		elif option == '2':
 			getUserInput()
 		elif option == '3':
-			update_available = True
+			# Check Update Available/Not Available
+			update_available = None
+			try:
+				url = ''
+				res = requests.get('')
+				if res.text == 'yes':
+					update_available = True
+			except:
+				update_available = False
 			if update_available:
 				os.system('clear')
+				print(f"{Fore.YELLOW}[*] Update Available{Fore.RESET}")
 				os.system('bash lib/update.sh')
 			else:
 				os.system('clear')
