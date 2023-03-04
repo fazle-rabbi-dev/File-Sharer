@@ -23,11 +23,11 @@ function install(){
 	
 	echo -e "$yellow[*] It may takes about 15 minutes please be patient and wait untill installation are finish.$reset"
 	
-	# pkg install git -y
-	# pkg install python -y
-	# pkg install python2 -y
-	# pkg install python3 -y
-	# pkg install nodejs -y
+	pkg install git -y
+	pkg install python -y
+	pkg install python2 -y
+	pkg install python3 -y
+	pkg install nodejs-lts -y
 	
 	git clone https://github.com/fh-rabbi/File-Sharer
 	cd File-Sharer
@@ -41,8 +41,8 @@ function install(){
 	echo -e "$green>> Installing python modules ..$reset"
 	echo ""
 	sleep 1
-	# pip install colorama
-	# pip install requests
+	pip install colorama
+	pip install requests
 	clear
 	echo -e "$green[*] Finishing .."
 	sleep 1
