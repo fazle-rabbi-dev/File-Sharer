@@ -35,7 +35,7 @@ function install(){
 	echo -e "$green>> Installing node modules .."
 	echo ""
 	sleep 1
-	# npm i
+	npm i
 	clear
 	echo -e "$green>> Installing python modules ..$reset"
 	echo ""
