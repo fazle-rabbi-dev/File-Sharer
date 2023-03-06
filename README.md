@@ -88,26 +88,17 @@ Try it out today and experience the power of seamless file sharing on your Andro
 <p id="watch"></p> 
 
 ### Create Ngrok Account:
-<div align="center">
-	<iframe width="100%" src="https://drive.google.com/file/d/1-h_Dc5GfdHCk4ZuOW_XVa7TkxuHrn6JZ/preview" frameborder="1"
-		allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"
-	>
-	</iframe>
-</div>
+<a class="" href="https://drive.google.com/file/d/1-h_Dc5GfdHCk4ZuOW_XVa7TkxuHrn6JZ/view?usp=drivesdk">Watch Now</a>
 
 <p id="CompleteTutorial"></p> 
 
 ### Complete Video Tutorial:
 *Before watching this video please watch `Create Ngrok Account` video.*
 
-<div align="center">
-	<iframe width="100%" src="https://drive.google.com/file/d/1-vsSUp8sRuQz4BwmguAEdI93IXpyyBiu/preview" frameborder="1"
-		allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"
-	>
-	</iframe>
-</div>
+<a class="" href="https://drive.google.com/file/d/1-vsSUp8sRuQz4BwmguAEdI93IXpyyBiu/view?usp=drivesdk">Watch Now</a>
 
 ### Note:
 * *Without hotspot links will not generate!*
 
 * If you face any problem while installing this application you can message me on <a href="https://t.me/fhrabbi">Telegram</a>
+
