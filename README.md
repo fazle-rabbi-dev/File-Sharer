@@ -49,34 +49,34 @@ Try it out today and experience the power of seamless file sharing on your Andro
 4. `termux-setup-storage` after executing this command give storage permiasion
 
 * #### AUTO INSTALLATION:
-1. bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)
+1. `bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)`
 
-2. start-file-sharer
+2. `start-file-sharer`
 
 * #### MANUAL INSTALLATION:
-* cd
+* `cd`
 
-* pkg install git -y
+* `pkg install git -y`
 
-* pkg install python -y
+* `pkg install python -y`
 
-* pkg install nodejs-lts -y
+* `pkg install nodejs-lts -y`
 
-* git clone https://github.com/fh-rabbi/File-Sharer
+* `git clone https://github.com/fh-rabbi/File-Sharer`
 
-* cd File-Sharer
+* `cd File-Sharer`
 
-* mv start-file-sharer /data/data/com.termux/files/usr/bin
+* `mv start-file-sharer /data/data/com.termux/files/usr/bin`
 
-* cd /data/data/com.termux/files/usr/bin
+* `cd /data/data/com.termux/files/usr/bin`
 
-* chmod +x start-file-sharer
+* `chmod +x start-file-sharer`
 
-* cd $HOME/File-Sharer
+* `cd $HOME/File-Sharer`
 
-* bash lib/add_token.sh `now goto your ngrok account and copy the token then paste here!`
+* `bash lib/add_token.sh` **now goto your ngrok account and copy the token then paste here!**
 
-* python main.py or start-file-sharer
+* `python main.py or start-file-sharer`
 
 
 ### SCREENSHOTS:
@@ -98,7 +98,7 @@ Try it out today and experience the power of seamless file sharing on your Andro
 <a class="" href="https://drive.google.com/file/d/1-vsSUp8sRuQz4BwmguAEdI93IXpyyBiu/view?usp=drivesdk">Watch Now</a>
 
 ### Note:
-* *Without hotspot links will not generate!*
+🚨 *Without hotspot links will not generate!*
 
-* If you face any problem while installing this application you can message me on <a href="https://t.me/fhrabbi">Telegram</a>
+🤖 If you face any problem while installing this application you can message me on <a href="https://t.me/fhrabbi">Telegram</a>
 
