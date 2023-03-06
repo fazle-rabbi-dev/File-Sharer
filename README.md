@@ -46,7 +46,8 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	> Or you can take the help of YouTube.
 
 * At first Download <a href="https://f-droid.org/repo/com.termux_118.apk">Termux</a> *Don't download from play store!*
-* Execute bellow command
+* Create <a href="https://dashboard.ngrok.com/signup">Ngrok</a> account for token.You can use temp mail.Video tutorial <a href="#watch">watch</a>
+* Open termux and execute bellow command -->
 
 * `termux-setup-storage` after executing this command give storage permiasion
 * #### `Auto Install:`
@@ -55,6 +56,8 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	
 	* start-file-sharer
 * #### `Manual Install:`
+	* cd
+	
 	* pkg install git -y
 	
 	* pkg install python -y
@@ -71,8 +74,10 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	
 	* chmod +x start-file-sharer
 	
-	* cd ..
+	* cd $HOME/File-Sharer
 	
+	* bash lib/add_token.sh
+
 	* python main.py or start-file-sharer
 
 
@@ -82,8 +87,12 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	<img width="40%" src="screenshots/two.png" alt="" />
 </div>
 
+<p id="watch"></p> 
 
-### WATCH VIDEO [Termux]:
+### Create Ngrok Account:
+<video src="" height="400px" width="100%" preload="none" autoplay="none"></video>
+
+### How To Use This Web App:
 <video src="" height="400px" width="100%" preload="none" autoplay="none"></video>
 
 ### Note:

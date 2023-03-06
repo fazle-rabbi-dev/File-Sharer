@@ -54,6 +54,7 @@ function install(){
 	chmod +x start-file-sharer
 	clear
 	# Setup Token
+	cd $HOME/File-Sharer/lib
 	bash add_token.sh
 	echo -e "$green[✔] Installation has been finished"
 	echo -e "$blue[✔] Now you can run this app by executing bellow command from any location in your termux!"

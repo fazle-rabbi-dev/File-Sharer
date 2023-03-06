@@ -11,7 +11,6 @@ from colorama import *
 
 os.system('clear')
 
-
 # Banner
 def banner():
 	print(f"""
@@ -36,6 +35,7 @@ def menu(path_name):
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}1.{Fore.RESET} Yes
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}2.{Fore.RESET} No
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}3.{Fore.RESET} Update
+║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}4.{Fore.RESET} Add new ngrok token
 ║--{Fore.RED}>{Fore.RESET} {Fore.GREEN}0.{Fore.RESET} Exit
 ║""")
 
@@ -189,6 +189,8 @@ def main():
 				time.sleep(1)
 				print("[*] Already up to date")
 				os.system('python main.py')
+		elif option == '4':
+			os.system('bash lib/add_token.sh')
 		else:
 			os.system('clear')
 			menu(path_name)
