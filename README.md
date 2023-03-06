@@ -45,16 +45,16 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	
 	> Or you can take the help of YouTube.
 
-* At first Download <a class="" href="#">Termux</a>
+* At first Download <a href="https://f-droid.org/repo/com.termux_118.apk">Termux</a> *Don't download from play store!*
 * Execute bellow command
 
 * `termux-setup-storage` after executing this command give storage permiasion
-* ### `Auto Install`
+* #### `Auto Install`
 	
-	* `bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)`
+	* bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)
 	
-	* `start-file-sharer`
-* ### `Manual Install`
+	* start-file-sharer
+* #### `Manual Install`
 	* pkg install git -y
 	
 	* pkg install python -y
