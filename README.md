@@ -29,6 +29,7 @@ Try it out today and experience the power of seamless file sharing on your Andro
 * Git,nodejs-lts,python
 * Hotspot enabled
 * Storage 150 MB
+* Ngrok token
 
 ### FEATURES :
 * Share your internel storage
