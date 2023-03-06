@@ -88,7 +88,9 @@ async function startApp(){
 	// Get ngrok url
 	let url = '';
 	try {
-		url = await ngrok.connect(PORT);
+		url = await ngrok.connect({
+			addr: PORT,
+		});
 		clearInterval(interval_id);
 	} catch (e) {
 		clearInterval(interval_id);

@@ -49,12 +49,12 @@ Try it out today and experience the power of seamless file sharing on your Andro
 * Execute bellow command
 
 * `termux-setup-storage` after executing this command give storage permiasion
-* #### `Auto Install`
+* #### `Auto Install:`
 	
 	* bash <(curl -s https://raw.githubusercontent.com/fh-rabbi/File-Sharer/main/lib/install.sh)
 	
 	* start-file-sharer
-* #### `Manual Install`
+* #### `Manual Install:`
 	* pkg install git -y
 	
 	* pkg install python -y
@@ -73,7 +73,7 @@ Try it out today and experience the power of seamless file sharing on your Andro
 	
 	* cd ..
 	
-	* python main.py/start-file-sharer
+	* python main.py or start-file-sharer
 
 
 ### SCREEN SHOTS [Termux]:

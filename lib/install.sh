@@ -25,8 +25,6 @@ function install(){
 	
 	pkg install git -y
 	pkg install python -y
-	# pkg install python2 -y
-	# pkg install python3 -y
 	pkg install nodejs-lts -y
 	
 	git clone https://github.com/fh-rabbi/File-Sharer
@@ -37,6 +35,9 @@ function install(){
 	echo ""
 	sleep 1
 	npm i
+	clear
+	echo -e "Installing ngrok on global ..!\n"
+	npm install ngrok -g
 	clear
 	echo -e "$green>> Installing python modules ..$reset"
 	echo ""
@@ -51,15 +52,15 @@ function install(){
 	mv start-file-sharer /data/data/com.termux/files/usr/bin
 	cd /data/data/com.termux/files/usr/bin
 	chmod +x start-file-sharer
-	
 	clear
-	sleep 1
-	
-	cd $HOME/File-Sharer
-	rm lib/install.sh
+	# Setup Token
+	bash add_token.sh
 	echo -e "$green[✔] Installation has been finished"
 	echo -e "$blue[✔] Now you can run this app by executing bellow command from any location in your termux!"
 	echo -e "$yellow[*] start-file-sharer$reset"
+	sleep 1
+	cd $HOME/File-Sharer
+	rm lib/install.sh
 }
 
 
