@@ -40,7 +40,7 @@ function makeResponse(req,res) {
 app.route('/')
 .get(async(req,res) => {
    // Let print someone open this link
-   /*console.log("\033[1;92m[*] Someone opened your link")
+   console.log("\033[1;92m[*] Someone opened your link")
    
    try {
     const response = await axios.get('https://api.ipify.org/?format=json');
@@ -49,7 +49,7 @@ app.route('/')
   } catch (error) {
     console.error("\033[1;91m[*] Error while getting ip address");
     //res.status(500).send('Error getting public IP address');
-  }*/
+  }
    
    content = readStorage();
    res.render('home.ejs',{
